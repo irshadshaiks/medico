@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --pad: clamp(20px, 5vw, 72px);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-void text-ice font-sans antialiased;
+    overflow-x: hidden;
+  }
+  /* atmospheric wash behind everything */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(120% 80% at 78% 8%, rgba(59, 118, 246, 0.13), transparent 60%),
+      radial-gradient(90% 70% at 8% 92%, rgba(21, 154, 174, 0.1), transparent 62%);
+  }
+  h1, h2, h3, h4 {
+    @apply font-display font-medium;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  ::selection {
+    background: rgba(79, 216, 228, 0.28);
+  }
+  :focus-visible {
+    outline: 2px solid #4fd8e4;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell;
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+  }
+  .lede {
+    @apply text-mute leading-relaxed;
+    font-size: clamp(1rem, 1.25vw, 1.13rem);
+    max-width: 62ch;
+  }
+  .h1 {
+    font-size: clamp(2.6rem, 6.2vw, 5.05rem);
+  }
+  .h2 {
+    font-size: clamp(1.95rem, 3.9vw, 3.15rem);
+  }
+  .glass {
+    @apply border border-hair bg-[rgba(12,22,33,.55)];
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+  }
+  .hairline {
+    @apply border-hair;
+  }
+  /* buttons */
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-[11px] border border-hairStrong px-[18px] py-[11px]
+           text-[0.925rem] font-medium text-ice no-underline transition-all duration-200 ease-out;
+    white-space: nowrap;
+  }
+  .btn:hover {
+    @apply -translate-y-px border-[rgba(143,182,196,.42)] bg-[rgba(143,182,196,.07)];
+  }
+  .btn-ghost {
+    @apply border-transparent px-[14px] text-mute;
+  }
+  .btn-ghost:hover {
+    @apply bg-[rgba(143,182,196,.08)] text-ice;
+  }
+  .btn-primary {
+    @apply border-transparent font-semibold text-[#02171B];
+    background: linear-gradient(180deg, #8ceaf2 0%, #4fd8e4 42%, #2fbacb 100%);
+    box-shadow: 0 10px 30px -14px rgba(79, 216, 228, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(180deg, #9df0f7 0%, #5fe2ed 42%, #38c6d7 100%);
+    box-shadow: 0 16px 40px -14px rgba(79, 216, 228, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+  .btn-lg {
+    @apply rounded-[13px] px-[22px] py-[14px] text-base;
+  }
+  .cell {
+    @apply relative overflow-hidden rounded-[18px] border border-hair p-[clamp(20px,2.4vw,30px)]
+           transition-all duration-300 ease-out;
+    background: linear-gradient(180deg, rgba(13, 23, 36, 0.62), rgba(6, 10, 16, 0.5));
+    backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+  }
+  .cell:hover {
+    @apply -translate-y-0.5 border-hairStrong;
+  }
+  .chip {
+    @apply whitespace-nowrap rounded-[7px] border border-hair bg-[rgba(143,182,196,.05)] px-2.5 py-[5px] text-[0.745rem] text-mute;
+  }
+  .section {
+    padding-top: clamp(84px, 11vw, 150px);
+    padding-bottom: clamp(84px, 11vw, 150px);
+  }
+}
+
+/* GSAP sets these; keep content visible if JS or motion is off */
+.reveal {
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  * {
+    animation: none !important;
+  }
+}
