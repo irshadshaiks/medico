@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: medikiosk
+      POSTGRES_PASSWORD: medikiosk
+      POSTGRES_DB: medikiosk
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U medikiosk"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: .
+    depends_on:
+      db: { condition: service_healthy }
+    environment:
+      DATABASE_URL: postgresql+asyncpg://medikiosk:medikiosk@db:5432/medikiosk
+      SECRET_KEY: local-dev-secret-not-for-production
+      CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+      AI_PROVIDER: ${AI_PROVIDER:-mock}
+      OCR_PROVIDER: ${OCR_PROVIDER:-tesseract}
+      STORAGE_PROVIDER: local
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      ALLOW_DEMO_SEED: "true"
+      DEBUG: "true"
+    ports: ["8000:8000"]
+    volumes:
+      - ./:/app
+      - storage:/app/storage
+    # Migrate, seed, then serve with reload. Safe to re-run; both steps are idempotent.
+    command: >
+      sh -c "alembic upgrade head &&
+             python -m scripts.seed_demo_data &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
+volumes:
+  pgdata:
+  storage:

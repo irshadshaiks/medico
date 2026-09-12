@@ -1,0 +1,91 @@
+{
+  "id": "fever",
+  "label": "Fever",
+  "match_keywords": ["fever", "temperature", "bukhar", "jvara", "hot", "chills", "shivering"],
+  "nodes": [
+    {
+      "id": "onset",
+      "category": "onset",
+      "question": "How many days have you had the fever?",
+      "answer_type": "duration",
+      "structured": [
+        { "key": "prolonged_fever", "keywords": ["week", "weeks", "10 days", "two weeks", "month", "15 days"] }
+      ]
+    },
+    {
+      "id": "pattern",
+      "category": "character",
+      "question": "Is the fever there all the time, or does it come and go?",
+      "answer_type": "choice",
+      "options": ["All the time", "Comes and goes", "Mostly in the evening", "With shivering"],
+      "structured": [{ "key": "rigors", "keywords": ["shivering", "chills", "rigor", "kaanpna"] }]
+    },
+    {
+      "id": "measured",
+      "category": "severity",
+      "question": "Have you measured it? If so, what was the reading?",
+      "answer_type": "text",
+      "optional": true
+    },
+    {
+      "id": "associated",
+      "category": "associated_symptoms",
+      "question": "Along with the fever, have you had any of these?",
+      "answer_type": "multi_choice",
+      "options": ["Cough", "Loose motions", "Burning when passing urine", "Rash", "Severe headache", "None of these"],
+      "structured": [
+        { "key": "cough", "keywords": ["cough", "khaansi", "kemmu"] },
+        { "key": "diarrhoea", "keywords": ["loose", "motions", "diarrhoea", "dast"] },
+        { "key": "dysuria", "keywords": ["burning", "urine", "peshab"] },
+        { "key": "rash", "keywords": ["rash", "spots", "daane"] },
+        { "key": "severe_headache", "keywords": ["headache", "sir dard", "tale novu"] }
+      ]
+    },
+    {
+      "id": "neuro_screen",
+      "category": "red_flag_screen",
+      "question": "Have you had neck stiffness, confusion, or a fit since the fever started?",
+      "answer_type": "text",
+      "structured": [
+        { "key": "neck_stiffness", "keywords": ["neck", "stiff", "gardan"] },
+        { "key": "altered_consciousness", "keywords": ["confus", "drowsy", "not making sense", "behosh"] },
+        { "key": "seizure", "keywords": ["fit", "seizure", "convulsion", "daura"] }
+      ]
+    },
+    {
+      "id": "breathing_screen",
+      "category": "red_flag_screen",
+      "question": "Are you finding it hard to breathe, or breathing faster than usual?",
+      "answer_type": "text",
+      "structured": [{ "key": "breathlessness", "keywords": ["hard to breathe", "breathless", "fast", "saans"] }]
+    },
+    {
+      "id": "intake",
+      "category": "associated_symptoms",
+      "question": "Have you been able to eat and drink normally?",
+      "answer_type": "choice",
+      "options": ["Yes, normally", "Less than usual", "Almost nothing"],
+      "structured": [{ "key": "poor_intake", "keywords": ["almost nothing", "not able", "cannot drink"] }]
+    },
+    {
+      "id": "travel_contact",
+      "category": "personal_history",
+      "question": "Have you travelled recently, or has anyone at home had the same fever?",
+      "answer_type": "text",
+      "optional": true
+    },
+    {
+      "id": "past_history",
+      "category": "past_history",
+      "question": "Do you have diabetes, or any condition that lowers your immunity?",
+      "answer_type": "text",
+      "structured": [{ "key": "diabetes", "keywords": ["diabetes", "sugar", "madhumeha"] }]
+    },
+    {
+      "id": "medications",
+      "category": "medications",
+      "question": "What have you taken for the fever so far?",
+      "answer_type": "text"
+    }
+  ]
+}

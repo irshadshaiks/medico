@@ -1,0 +1,86 @@
+{
+  "id": "abdominal_pain",
+  "label": "Abdominal pain",
+  "match_keywords": ["stomach", "abdomen", "abdominal", "belly", "pet", "pet dard", "hotte", "tummy"],
+  "nodes": [
+    {
+      "id": "site",
+      "category": "site",
+      "question": "Which part of your stomach hurts most?",
+      "answer_type": "choice",
+      "options": ["Upper middle", "Upper right", "Around the navel", "Lower right", "Lower left", "All over"],
+      "structured": [
+        { "key": "rif_pain", "keywords": ["lower right"] },
+        { "key": "epigastric", "keywords": ["upper middle", "upper right"] },
+        { "key": "generalised", "keywords": ["all over"] }
+      ]
+    },
+    {
+      "id": "onset",
+      "category": "onset",
+      "question": "When did the pain start, and did it come on suddenly?",
+      "answer_type": "duration",
+      "structured": [{ "key": "onset_sudden", "keywords": ["sudden", "suddenly", "achanak", "iddakki"] }]
+    },
+    {
+      "id": "character",
+      "category": "character",
+      "question": "Is the pain constant, or does it come in waves?",
+      "answer_type": "choice",
+      "options": ["Constant", "Comes in waves", "Burning", "Cramping"],
+      "structured": [{ "key": "constant_pain", "keywords": ["constant"] }]
+    },
+    {
+      "id": "severity",
+      "category": "severity",
+      "question": "Can you move about and sit comfortably, or does the pain stop you?",
+      "answer_type": "choice",
+      "options": ["I can move normally", "I move carefully", "I cannot move without pain"],
+      "structured": [{ "key": "severe_pain", "keywords": ["cannot move"] }]
+    },
+    {
+      "id": "associated",
+      "category": "associated_symptoms",
+      "question": "Have you had vomiting, loose motions, or fever with this?",
+      "answer_type": "multi_choice",
+      "options": ["Vomiting", "Loose motions", "Fever", "Not passed stool or gas", "None of these"],
+      "structured": [
+        { "key": "vomiting", "keywords": ["vomit", "ulti", "vaanti"] },
+        { "key": "diarrhoea", "keywords": ["loose", "motions", "dast"] },
+        { "key": "fever", "keywords": ["fever", "bukhar"] },
+        { "key": "obstipation", "keywords": ["not passed", "no stool", "no gas"] }
+      ]
+    },
+    {
+      "id": "bleeding_screen",
+      "category": "red_flag_screen",
+      "question": "Have you noticed any blood in your vomit or in your stool?",
+      "answer_type": "text",
+      "structured": [
+        { "key": "gi_bleeding", "keywords": ["blood", "black stool", "khoon", "rakta", "coffee"] }
+      ]
+    },
+    {
+      "id": "urinary",
+      "category": "associated_symptoms",
+      "question": "Any burning or difficulty when passing urine?",
+      "answer_type": "text",
+      "optional": true,
+      "structured": [{ "key": "dysuria", "keywords": ["burning", "difficulty", "peshab"] }]
+    },
+    {
+      "id": "past_surgery",
+      "category": "past_history",
+      "question": "Have you had any operation on your stomach before?",
+      "answer_type": "text",
+      "structured": [{ "key": "prior_abdominal_surgery", "keywords": ["operation", "surgery", "appendix", "caesarean", "operation hua"] }]
+    },
+    {
+      "id": "medications",
+      "category": "medications",
+      "question": "Are you taking any medicines, including painkillers?",
+      "answer_type": "text",
+      "structured": [{ "key": "nsaid_use", "keywords": ["painkiller", "brufen", "ibuprofen", "diclofenac", "combiflam"] }]
+    }
+  ]
+}

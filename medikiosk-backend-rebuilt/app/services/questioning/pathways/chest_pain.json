@@ -1,0 +1,129 @@
+{
+  "id": "chest_pain",
+  "label": "Chest pain",
+  "match_keywords": ["chest pain", "chest", "seene", "seene mein dard", "chaati", "edeya novu", "heart pain", "chest heaviness"],
+  "nodes": [
+    {
+      "id": "site",
+      "category": "site",
+      "question": "Where exactly in your chest do you feel it? You can point on the screen.",
+      "answer_type": "choice",
+      "options": ["In the centre", "On the left side", "On the right side", "All across the chest"],
+      "structured": [{ "key": "central_pain", "keywords": ["centre", "center", "middle", "all across"] }]
+    },
+    {
+      "id": "character",
+      "category": "character",
+      "question": "What does it feel like?",
+      "answer_type": "choice",
+      "options": ["Heaviness or pressure", "Burning", "Sharp or stabbing", "Tightness or squeezing"],
+      "structured": [
+        { "key": "pressure_character", "keywords": ["heaviness", "pressure", "tightness", "squeezing", "bhaaripan"] }
+      ]
+    },
+    {
+      "id": "onset",
+      "category": "onset",
+      "question": "When did it first start, and did it come on suddenly?",
+      "answer_type": "duration",
+      "structured": [
+        { "key": "onset_sudden", "keywords": ["sudden", "suddenly", "all at once", "achanak"] },
+        { "key": "onset_recent", "keywords": ["today", "this morning", "an hour", "few hours", "just now", "aaj"] }
+      ]
+    },
+    {
+      "id": "duration_episode",
+      "category": "duration",
+      "question": "How long does each episode last?",
+      "answer_type": "choice",
+      "options": ["Less than a minute", "A few minutes", "More than twenty minutes", "It has not stopped"],
+      "structured": [
+        { "key": "prolonged_episode", "keywords": ["more than twenty minutes", "has not stopped", "continuous"] }
+      ]
+    },
+    {
+      "id": "aggravating",
+      "category": "aggravating_factors",
+      "question": "Does anything bring it on, such as walking, climbing stairs, or eating?",
+      "answer_type": "text",
+      "structured": [
+        { "key": "exertional", "keywords": ["walk", "walking", "stairs", "climbing", "exertion", "uphill", "chalne", "medi"] },
+        { "key": "after_food", "keywords": ["eating", "after food", "meal", "khane"] },
+        { "key": "at_rest", "keywords": ["at rest", "resting", "lying down", "sitting", "even when i sit"] }
+      ]
+    },
+    {
+      "id": "relieving",
+      "category": "relieving_factors",
+      "question": "Does anything make it settle down?",
+      "answer_type": "text",
+      "structured": [{ "key": "relieved_by_rest", "keywords": ["rest", "resting", "sitting down", "stopping", "aaraam"] }]
+    },
+    {
+      "id": "radiation",
+      "category": "radiation",
+      "question": "Does the feeling move anywhere else, for example to your arm, jaw, neck or back?",
+      "answer_type": "multi_choice",
+      "options": ["Left arm", "Right arm", "Jaw or neck", "Back", "It stays in one place"],
+      "structured": [
+        { "key": "radiates_arm", "keywords": ["left arm", "right arm", "arm", "haath", "kai"] },
+        { "key": "radiates_jaw", "keywords": ["jaw", "neck", "jabda", "galla"] },
+        { "key": "radiates_back", "keywords": ["back", "peeth", "benn"] }
+      ]
+    },
+    {
+      "id": "associated",
+      "category": "associated_symptoms",
+      "question": "When it happens, do you also feel breathless, sweaty, or sick in the stomach?",
+      "answer_type": "multi_choice",
+      "options": ["Breathless", "Sweating", "Feeling sick or vomiting", "Dizzy or faint", "None of these"],
+      "structured": [
+        { "key": "breathlessness", "keywords": ["breathless", "short of breath", "saans", "usiraatta"] },
+        { "key": "diaphoresis", "keywords": ["sweat", "sweating", "clammy", "pasina", "bevaru"] },
+        { "key": "nausea", "keywords": ["sick", "vomit", "nausea", "ulti"] },
+        { "key": "syncope", "keywords": ["dizzy", "faint", "blackout", "chakkar"] }
+      ]
+    },
+    {
+      "id": "exertion_detail",
+      "category": "aggravating_factors",
+      "ask_if": { "node": "aggravating", "any_of": ["exertional"] },
+      "question": "How far can you walk on level ground before it starts?",
+      "answer_type": "text",
+      "optional": true
+    },
+    {
+      "id": "risk_factors",
+      "category": "past_history",
+      "question": "Do you have diabetes, high blood pressure, or a heart condition? Has anyone in your family had a heart attack?",
+      "answer_type": "text",
+      "structured": [
+        { "key": "diabetes", "keywords": ["diabetes", "sugar", "madhumeha", "shakkar"] },
+        { "key": "hypertension", "keywords": ["blood pressure", "bp", "hypertension"] },
+        { "key": "cardiac_history", "keywords": ["heart", "cardiac", "angina", "attack", "dil", "hrudaya"] },
+        { "key": "family_cardiac", "keywords": ["father", "mother", "brother", "family", "pita", "bhai"] }
+      ]
+    },
+    {
+      "id": "smoking",
+      "category": "personal_history",
+      "question": "Do you smoke or chew tobacco?",
+      "answer_type": "text",
+      "structured": [{ "key": "tobacco", "keywords": ["smoke", "smoking", "tobacco", "gutka", "beedi", "chew"] }]
+    },
+    {
+      "id": "medications",
+      "category": "medications",
+      "question": "Are you taking any medicines at the moment?",
+      "answer_type": "text"
+    },
+    {
+      "id": "red_flag_screen",
+      "category": "red_flag_screen",
+      "question": "Right now, as you sit here, is the pain still there?",
+      "answer_type": "choice",
+      "options": ["Yes, it is there now", "No, it has settled"],
+      "structured": [{ "key": "ongoing_now", "keywords": ["yes", "it is there now", "still", "abhi"] }]
+    }
+  ]
+}

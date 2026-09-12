@@ -1,0 +1,82 @@
+{
+  "id": "headache",
+  "label": "Headache",
+  "match_keywords": ["headache", "head pain", "migraine", "sir dard", "tale novu", "head"],
+  "nodes": [
+    {
+      "id": "onset",
+      "category": "onset",
+      "question": "When did the headache start, and did it come on suddenly?",
+      "answer_type": "duration",
+      "structured": [
+        { "key": "thunderclap", "keywords": ["sudden", "suddenly", "worst", "instantly", "achanak"] }
+      ]
+    },
+    {
+      "id": "site",
+      "category": "site",
+      "question": "Where in your head do you feel it?",
+      "answer_type": "choice",
+      "options": ["One side", "Both sides", "Back of the head", "Around the eyes", "All over"],
+      "structured": [{ "key": "occipital", "keywords": ["back of the head"] }]
+    },
+    {
+      "id": "pattern",
+      "category": "character",
+      "question": "Is it there every day, or does it come in attacks?",
+      "answer_type": "choice",
+      "options": ["Every day", "In attacks", "Only in the morning", "Only in the evening"],
+      "structured": [{ "key": "morning_headache", "keywords": ["morning"] }]
+    },
+    {
+      "id": "associated",
+      "category": "associated_symptoms",
+      "question": "Do you get any of these with the headache?",
+      "answer_type": "multi_choice",
+      "options": ["Vomiting", "Blurred vision", "Light hurting your eyes", "Weakness on one side", "None of these"],
+      "structured": [
+        { "key": "vomiting", "keywords": ["vomit", "ulti"] },
+        { "key": "visual_disturbance", "keywords": ["blurred", "vision", "double", "dikhai"] },
+        { "key": "photophobia", "keywords": ["light"] },
+        { "key": "focal_weakness", "keywords": ["weakness", "one side", "kamzori"] }
+      ]
+    },
+    {
+      "id": "neuro_screen",
+      "category": "red_flag_screen",
+      "question": "Have you had a fit, confusion, fever with neck stiffness, or a recent head injury?",
+      "answer_type": "text",
+      "structured": [
+        { "key": "seizure", "keywords": ["fit", "seizure", "daura"] },
+        { "key": "altered_consciousness", "keywords": ["confus", "drowsy", "behosh"] },
+        { "key": "neck_stiffness", "keywords": ["neck", "stiff", "gardan"] },
+        { "key": "head_injury", "keywords": ["injury", "fall", "hit", "chot"] },
+        { "key": "fever", "keywords": ["fever", "bukhar"] }
+      ]
+    },
+    {
+      "id": "triggers",
+      "category": "aggravating_factors",
+      "question": "Does anything set it off, such as coughing, bending forward, or bright light?",
+      "answer_type": "text",
+      "optional": true,
+      "structured": [{ "key": "worse_on_straining", "keywords": ["cough", "bending", "straining", "lifting"] }]
+    },
+    {
+      "id": "past_history",
+      "category": "past_history",
+      "question": "Have you had headaches like this before, and do you have blood pressure problems?",
+      "answer_type": "text",
+      "structured": [
+        { "key": "first_severe_headache", "keywords": ["never", "first time", "pehli baar"] },
+        { "key": "hypertension", "keywords": ["blood pressure", "bp"] }
+      ]
+    },
+    {
+      "id": "medications",
+      "category": "medications",
+      "question": "What have you been taking for the headache?",
+      "answer_type": "text"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "emergency_screen",
+  "label": "Safety screen",
+  "match_keywords": [],
+  "nodes": [
+    {
+      "id": "danger_now",
+      "category": "emergency_screen",
+      "question": "Before we start — are you feeling any of these RIGHT NOW?",
+      "answer_type": "multi_choice",
+      "options": [
+        "Chest pain or heaviness right now",
+        "Hard to breathe right now",
+        "Sweating heavily with the pain",
+        "Sudden weakness in the face, arm or leg",
+        "Trouble speaking, or the face has drooped",
+        "A fit or blackout today",
+        "Confused or very drowsy right now",
+        "Bleeding that will not stop",
+        "Swelling of the face, lips or throat",
+        "None of these"
+      ],
+      "structured": [
+        { "key": "esc_chest_pain_now", "keywords": ["chest pain or heaviness right now"] },
+        { "key": "esc_breathless_now", "keywords": ["hard to breathe right now"] },
+        { "key": "esc_sweating", "keywords": ["sweating heavily with the pain"] },
+        { "key": "esc_sudden_weakness", "keywords": ["sudden weakness in the face, arm or leg"] },
+        { "key": "esc_speech_difficulty", "keywords": ["trouble speaking"] },
+        { "key": "esc_face_droop", "keywords": ["the face has drooped"] },
+        { "key": "esc_seizure_today", "keywords": ["a fit or blackout today"] },
+        { "key": "esc_confusion_now", "keywords": ["confused or very drowsy right now"] },
+        { "key": "esc_bleeding_now", "keywords": ["bleeding that will not stop"] },
+        { "key": "esc_face_throat_swelling", "keywords": ["swelling of the face, lips or throat"] }
+      ]
+    }
+  ]
+}

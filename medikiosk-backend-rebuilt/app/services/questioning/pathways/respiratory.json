@@ -1,0 +1,89 @@
+{
+  "id": "respiratory",
+  "label": "Cough or breathing difficulty",
+  "match_keywords": ["cough", "breathless", "breathing", "wheeze", "asthma", "khaansi", "saans", "kemmu", "phlegm"],
+  "nodes": [
+    {
+      "id": "primary",
+      "category": "chief_complaint",
+      "question": "Is the main problem the cough, or the difficulty in breathing?",
+      "answer_type": "choice",
+      "options": ["Mainly cough", "Mainly breathing difficulty", "Both equally"],
+      "structured": [{ "key": "dyspnoea_primary", "keywords": ["breathing", "both"] }]
+    },
+    {
+      "id": "onset",
+      "category": "onset",
+      "question": "How long has this been going on?",
+      "answer_type": "duration",
+      "structured": [
+        { "key": "chronic_cough", "keywords": ["three weeks", "month", "months", "long time", "years"] },
+        { "key": "onset_recent", "keywords": ["today", "yesterday", "two days", "few hours"] }
+      ]
+    },
+    {
+      "id": "sputum",
+      "category": "character",
+      "question": "Are you bringing up any phlegm? If so, what colour is it?",
+      "answer_type": "text",
+      "structured": [
+        { "key": "haemoptysis", "keywords": ["blood", "red", "khoon", "rakta", "blood-stained"] },
+        { "key": "purulent_sputum", "keywords": ["yellow", "green", "thick"] }
+      ]
+    },
+    {
+      "id": "exertion",
+      "category": "severity",
+      "question": "At what point do you get breathless?",
+      "answer_type": "choice",
+      "options": ["Only with hard work", "Walking on level ground", "Walking a few steps", "Even at rest"],
+      "structured": [
+        { "key": "dyspnoea_at_rest", "keywords": ["even at rest", "at rest"] },
+        { "key": "dyspnoea_minimal_exertion", "keywords": ["few steps"] }
+      ]
+    },
+    {
+      "id": "night",
+      "category": "associated_symptoms",
+      "question": "Does it wake you at night, or is it worse when you lie flat?",
+      "answer_type": "text",
+      "structured": [{ "key": "orthopnoea", "keywords": ["lie flat", "lying down", "wake", "night", "sit up"] }]
+    },
+    {
+      "id": "associated",
+      "category": "associated_symptoms",
+      "question": "Have you had fever, weight loss, or night sweats?",
+      "answer_type": "multi_choice",
+      "options": ["Fever", "Weight loss", "Night sweats", "Chest pain", "None of these"],
+      "structured": [
+        { "key": "fever", "keywords": ["fever", "bukhar"] },
+        { "key": "weight_loss", "keywords": ["weight loss", "vajan"] },
+        { "key": "night_sweats", "keywords": ["night sweats", "sweat"] },
+        { "key": "chest_pain", "keywords": ["chest pain"] }
+      ]
+    },
+    {
+      "id": "past_history",
+      "category": "past_history",
+      "question": "Have you been told before that you have asthma, TB, or a lung problem?",
+      "answer_type": "text",
+      "structured": [
+        { "key": "asthma", "keywords": ["asthma", "dama"] },
+        { "key": "prior_tb", "keywords": ["tb", "tuberculosis", "kshaya"] }
+      ]
+    },
+    {
+      "id": "smoking",
+      "category": "personal_history",
+      "question": "Do you smoke, or are you around smoke or dust at work?",
+      "answer_type": "text",
+      "structured": [{ "key": "tobacco", "keywords": ["smoke", "beedi", "cigarette", "tobacco"] }]
+    },
+    {
+      "id": "medications",
+      "category": "medications",
+      "question": "Do you use an inhaler or take any medicines for this?",
+      "answer_type": "text"
+    }
+  ]
+}

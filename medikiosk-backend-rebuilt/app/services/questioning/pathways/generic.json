@@ -1,0 +1,89 @@
+{
+  "id": "generic",
+  "label": "General intake",
+  "match_keywords": [],
+  "nodes": [
+    {
+      "id": "complaint",
+      "category": "chief_complaint",
+      "question": "What brought you to the hospital today?",
+      "answer_type": "text"
+    },
+    {
+      "id": "onset",
+      "category": "onset",
+      "question": "When did this start?",
+      "answer_type": "duration",
+      "structured": [
+        { "key": "onset_sudden", "keywords": ["sudden", "suddenly", "all at once", "achanak", "iddakki"] },
+        { "key": "onset_today", "keywords": ["today", "this morning", "few hours", "aaj", "indu"] }
+      ]
+    },
+    {
+      "id": "course",
+      "category": "course",
+      "question": "Has it been getting better, getting worse, or staying about the same?",
+      "answer_type": "choice",
+      "options": ["Getting worse", "Getting better", "About the same", "It comes and goes"],
+      "structured": [{ "key": "worsening", "keywords": ["worse", "worsening", "badh", "jaasti"] }]
+    },
+    {
+      "id": "severity",
+      "category": "severity",
+      "question": "How much is it affecting your daily activities?",
+      "answer_type": "choice",
+      "options": ["Not much", "I manage with difficulty", "I cannot do my usual work", "I cannot get out of bed"],
+      "structured": [{ "key": "severe_limitation", "keywords": ["cannot get out of bed", "cannot do my usual work"] }]
+    },
+    {
+      "id": "associated",
+      "category": "associated_symptoms",
+      "question": "Have you noticed anything else along with this?",
+      "answer_type": "text",
+      "structured": [
+        { "key": "fever", "keywords": ["fever", "temperature", "bukhar", "jvara"] },
+        { "key": "breathlessness", "keywords": ["breathless", "short of breath", "cannot breathe", "saans", "usiraatta"] },
+        { "key": "vomiting", "keywords": ["vomit", "throwing up", "ulti", "vaanti"] },
+        { "key": "bleeding", "keywords": ["bleeding", "blood", "khoon", "rakta"] },
+        { "key": "weight_loss", "keywords": ["weight loss", "lost weight", "vajan kam"] }
+      ]
+    },
+    {
+      "id": "past_history",
+      "category": "past_history",
+      "question": "Do you have any long-term conditions, such as diabetes, blood pressure, asthma or heart problems?",
+      "answer_type": "text",
+      "structured": [
+        { "key": "diabetes", "keywords": ["diabetes", "sugar", "madhumeha", "shakkar"] },
+        { "key": "hypertension", "keywords": ["blood pressure", "bp", "hypertension", "raktadaba"] },
+        { "key": "cardiac_history", "keywords": ["heart", "cardiac", "angina", "dil", "hrudaya"] },
+        { "key": "asthma", "keywords": ["asthma", "wheezing", "dama"] }
+      ]
+    },
+    {
+      "id": "medications",
+      "category": "medications",
+      "question": "Are you taking any medicines at the moment?",
+      "answer_type": "text"
+    },
+    {
+      "id": "allergies",
+      "category": "allergies",
+      "question": "Have you ever had a bad reaction to a medicine?",
+      "answer_type": "text",
+      "optional": true
+    },
+    {
+      "id": "red_flag_screen",
+      "category": "red_flag_screen",
+      "question": "Since this started, have you had chest pain, severe breathlessness, fainting, or bleeding that would not stop?",
+      "answer_type": "text",
+      "structured": [
+        { "key": "chest_pain", "keywords": ["chest pain", "chest", "seene", "chaati", "edeya"] },
+        { "key": "breathlessness", "keywords": ["breathless", "short of breath", "cannot breathe", "saans"] },
+        { "key": "syncope", "keywords": ["faint", "fainted", "blackout", "collapsed", "behosh"] },
+        { "key": "uncontrolled_bleeding", "keywords": ["bleeding", "would not stop", "heavy bleeding"] }
+      ]
+    }
+  ]
+}
